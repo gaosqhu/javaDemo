@@ -10,13 +10,23 @@
  */
 package test;
 
+import static java.time.DayOfWeek.TUESDAY;
+import static java.time.temporal.TemporalAdjusters.dayOfWeekInMonth;
+import static java.time.temporal.TemporalAdjusters.firstDayOfMonth;
+import static java.time.temporal.TemporalAdjusters.firstDayOfNextMonth;
+import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
+import static java.time.temporal.TemporalAdjusters.nextOrSame;
+
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -56,6 +66,48 @@ public class DateTest {
         LocalDate d7 = LocalDate.of(2020, 3, 23);
         Period d8=Period.between(d6,d7);
         System.out.println(d8);
+
+        // Duration dd=Duration.between(d6,d7);
+
+        LocalDate d9 = LocalDate.parse("2020-04-07", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        System.out.println(d9);
+
+        LocalTime d10 = LocalTime.now();
+        LocalDateTime d11 = LocalDate.now().atTime(d10);
+        System.out.println(d11);
+
+        LocalDate d12 = d11.toLocalDate();
+        System.out.println(d12);
+
+        LocalDateTime d13 = LocalDateTime.now();
+        LocalDateTime d14 = LocalDateTime.of(2020, 04, 8, 07, 00, 00);
+        Duration d15 = Duration.between(d13, d14);
+        System.out.println(d15);
+
+        Duration d16 = Duration.ofMinutes(3);
+        System.out.println(d16);
+
+        Period d17 = Period.ofDays(10);
+        System.out.println(d17);
+
+        LocalDate d18 = LocalDate.of(2020, 04, 20);
+        LocalDate d181 = d18.withYear(2021);
+        LocalDate d182 = d18.withDayOfMonth(25);
+        LocalDate d183 = d18.withMonth(12);
+        System.out.println(d18);
+        LocalDate d184 = d18.with(ChronoField.MONTH_OF_YEAR, 5);
+        System.out.println(d184);
+
+        LocalDate d19 = LocalDate.of(2020, 04, 8);
+        LocalDate d191 = d19.with(nextOrSame(DayOfWeek.SATURDAY));
+        System.out.println(d191);
+        LocalDate d192 = d19.with(lastDayOfMonth());
+        System.out.println(d192);
+        LocalDate d193 = d19.with(dayOfWeekInMonth(1, TUESDAY));
+        System.out.println(d193);
+        System.out.println(d19.with(firstDayOfMonth()));
+        System.out.println(d19.with(firstDayOfNextMonth()));
+        System.out.println(d19.with(TemporalAdjusters.firstDayOfNextMonth()));
     }
 
 }
