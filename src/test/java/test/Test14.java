@@ -118,4 +118,15 @@ public class Test14 {
             ex.printStackTrace();
         }
     }
+
+    @Test
+    public void test5() {
+        LocalDate d1 = LocalDate.now();
+        LocalDate d2 = LocalDate.of(2020, 04, 10);
+        Long dif = d1.toEpochDay();
+        Long dif2 = d2.toEpochDay();
+        System.out.println(dif - dif2);
+        Period p=Period.between(d2,d1);
+        System.out.println(p.getDays());
+    }
 }
