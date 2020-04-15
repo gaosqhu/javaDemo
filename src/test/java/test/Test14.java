@@ -129,4 +129,15 @@ public class Test14 {
         Period p=Period.between(d2,d1);
         System.out.println(p.getDays());
     }
+
+    @Test
+    public void test6() {
+        boolean cond = false;
+        Double d1 = 1D;
+        Double d2 = 2D;
+        Double d3 = null;
+        double d5 = d1 * d2;
+        Double d4 = cond ? d5 : d3;
+        System.out.println(d4);
+    }
 }
