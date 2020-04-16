@@ -10,6 +10,11 @@
  */
 package test;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
@@ -19,5 +24,18 @@ package test;
  * @since [产品/模块版本] （可选）
  */
 public class Test16 {
+    @Test
+    public void test01() {
+        int i = 2;
+        Runnable r = () -> System.out.println(i);
+        // i =4;
+    }
+
+    @Test
+    public void test02() {
+        List<String> list = Arrays.asList("b", "a", "c");
+        list.sort(String::compareToIgnoreCase);
+        System.out.println(list);
+    }
 
 }
