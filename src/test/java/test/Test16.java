@@ -10,8 +10,11 @@
  */
 package test;
 
+import static java.util.Comparator.comparing;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.junit.Test;
 
@@ -36,6 +39,16 @@ public class Test16 {
         List<String> list = Arrays.asList("b", "a", "c");
         list.sort(String::compareToIgnoreCase);
         System.out.println(list);
+    }
+
+    @Test
+    public void test03() {
+        Supplier<String> t = String::new;
+        String d = t.get();
+        System.out.println(d);
+
+        List<String> list = Arrays.asList("tmp", "tmp2");
+        list.sort(comparing(String::length));
     }
 
 }
