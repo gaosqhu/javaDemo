@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import org.junit.Test;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
@@ -49,5 +51,14 @@ public class Test15 {
             }
         }
         return result;
+    }
+
+    @Test
+    public void test03() {
+        // 行为参数化
+        Thread t = new Thread(() -> System.out.println("ee"));
+        Thread t1 = new Thread(() -> System.out.println("eee3"));
+        t.start();
+        t1.start();
     }
 }
