@@ -14,6 +14,7 @@ import static java.util.Comparator.comparing;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import org.junit.Test;
@@ -48,7 +49,14 @@ public class Test16 {
         System.out.println(d);
 
         List<String> list = Arrays.asList("tmp", "tmp2");
-        list.sort(comparing(String::length));
+        list.sort(comparing(String::length).reversed().thenComparing(String::compareToIgnoreCase));
     }
 
+    @Test
+    public void test04() {
+        List<String> list = Arrays.asList("dd", "ddad");
+        Predicate<String> p = i -> i.length() > 2;
+        p.negate().and(i -> i.matches("d"));
+
+    }
 }
