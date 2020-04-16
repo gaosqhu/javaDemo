@@ -11,7 +11,7 @@
 package test.functionInterfaceTest;
 
 /**
- * 〈一句话功能简述〉<br>
+ * 〈除了predicate,consumer,function3个接口，还有对应的原始类型特化的函数式接口〉<br>
  * 〈功能详细描述〉
  *
  * @author gaozhen
