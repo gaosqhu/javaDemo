@@ -11,6 +11,7 @@
 package test;
 
 import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.summingInt;
 
 import java.util.Arrays;
 import java.util.List;
@@ -68,5 +69,14 @@ public class Test16 {
         // 流的3种原始类型特化，函数式接口的原始类型特化
         Long c = IntStream.rangeClosed(1, 100).filter(i -> i % 2 == 0).count();
         System.out.println(c);
+    }
+
+    @Test
+    public void test05() {
+        List<Integer> list = Arrays.asList(1, 2, 3);
+        int d = list.stream().collect(summingInt(Integer::intValue));
+        System.out.println(d);
+        int d2 = list.stream().peek(x -> System.out.println("begin " + x)).collect(summingInt(Integer::intValue));
+        System.out.println(d2);
     }
 }
