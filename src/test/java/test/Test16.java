@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -58,5 +59,8 @@ public class Test16 {
         Predicate<String> p = i -> i.length() > 2;
         p.negate().and(i -> i.matches("d"));
 
+        List<String> d = list.stream().map(s -> s.split("")).flatMap(Arrays::stream).distinct()
+                .collect(Collectors.toList());
+        System.out.println(d);
     }
 }
