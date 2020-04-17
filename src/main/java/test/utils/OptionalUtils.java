@@ -35,6 +35,6 @@ public class OptionalUtils {
         System.out.println(i1);
         int i2 = Optional.ofNullable(map.get("key2")).flatMap(OptionalUtils::stringToInter).orElse(0);
         System.out.println(i2);
+        map.values().stream().map(OptionalUtils::stringToInter).map(Optional::get).forEach(System.out::println);
     }
-
 }
