@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 
@@ -62,5 +63,10 @@ public class Test16 {
         List<String> d = list.stream().map(s -> s.split("")).flatMap(Arrays::stream).distinct()
                 .collect(Collectors.toList());
         System.out.println(d);
+        list.stream().filter(i -> i.length() > 2).findAny().ifPresent(System.out::println);
+
+        // 流的3种原始类型特化，函数式接口的原始类型特化
+        Long c = IntStream.rangeClosed(1, 100).filter(i -> i % 2 == 0).count();
+        System.out.println(c);
     }
 }
